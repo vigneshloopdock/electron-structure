@@ -1,0 +1,53 @@
+{
+  "name": "aiextractor",
+  "version": "1.0.0",
+  "main": "electron/main.js",
+  "scripts": {
+    "start": "electron .",
+    "package": "electron-builder"
+  },
+  "build": {
+    "appId": "com.aiextractor.app",
+    "directories": {
+      "buildResources": "build"
+    },
+    "files": [
+      "**/*",
+      "../frontend/build/**/*",
+      "../docker-compose.yml"
+    ],
+    "extraResources": [
+      {
+        "from": "../docker-compose.yml",
+        "to": "docker-compose.yml"
+      }
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "electron/logo_ico.ico"
+    },
+    "nsis": {
+      "installerIcon": "electron/logo_ico.ico",
+      "uninstallerIcon": "electron/logo_ico.ico"
+    },
+    "mac": {
+      "target": "dmg"
+    },
+    "linux": {
+      "target": "AppImage"
+    }
+  },
+  "devDependencies": {
+    "electron": "^31.7.7",
+    "electron-builder": "^24.13.3"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "n8n": "^1.118.2",
+    "sqlite3": "^5.1.7"
+  }
+}

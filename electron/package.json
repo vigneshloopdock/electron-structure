@@ -1,0 +1,51 @@
+{
+  "name": "aiextractor",
+  "version": "1.0.0",
+  "description": "AI Extractor Desktop App",
+  "main": "main.js",
+  "author": "Your Name",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "build": {
+    "appId": "com.aiextractor.app",
+    "productName": "AI Extractor",
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "files": [
+      "**/*",
+      "../frontend/.next/**/*",
+      "../frontend/public/**/*"
+    ],
+    "extraResources": [
+      {
+        "from": "../node_modules/.bin/n8n.cmd",
+        "to": "n8n/n8n.cmd"
+      },
+      {
+        "from": "../node_modules/n8n",
+        "to": "n8n/n8n"
+      }
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "logo_ico.ico"
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": false
+    }
+  },
+  "devDependencies": {
+    "electron": "^31.7.7",
+    "electron-builder": "^24.13.3"
+  },
+  "dependencies": {
+    "n8n": "^1.118.2"
+  }
+}
